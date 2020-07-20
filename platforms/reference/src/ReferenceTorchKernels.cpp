@@ -41,17 +41,17 @@ using namespace std;
 
 static vector<Vec3>& extractPositions(ContextImpl& context) {
     ReferencePlatform::PlatformData* data = reinterpret_cast<ReferencePlatform::PlatformData*>(context.getPlatformData());
-    return *data->positions;
+    return *reinterpret_cast<vector<Vec3>*>(data->positions);
 }
 
 static vector<Vec3>& extractForces(ContextImpl& context) {
     ReferencePlatform::PlatformData* data = reinterpret_cast<ReferencePlatform::PlatformData*>(context.getPlatformData());
-    return *data->forces;
+    return *reinterpret_cast<vector<Vec3>*>(data->forces);
 }
 
 static Vec3* extractBoxVectors(ContextImpl& context) {
     ReferencePlatform::PlatformData* data = reinterpret_cast<ReferencePlatform::PlatformData*>(context.getPlatformData());
-    return data->periodicBoxVectors;
+    return reinterpret_cast<Vec3*>(data->periodicBoxVectors);
 }
 
 ReferenceCalcTorchForceKernel::~ReferenceCalcTorchForceKernel() {
