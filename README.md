@@ -18,14 +18,17 @@ follow these steps.
 1. Create a directory in which to build the plugin.
 
 2. Run the CMake GUI or ccmake, specifying your new directory as the build directory and the top
-level directory of this project as the source directory.
+level directory of this project as the source directory. Remember to add 
+`-DCMAKE_CXX_FLAGS=-D_GLIBCXX_USE_CXX11_ABI=0` flag to use old ABI so as to stay compatible
+with other component (at least for all prebuilt openmms for Python 3.6/7.x).
 
 3. Press "Configure".  (Do not worry if it produces an error message about not being able to find PyTorch.)
 
 4. Set OPENMM_DIR to point to the directory where OpenMM is installed.  This is needed to locate
 the OpenMM header files and libraries.
 
-5. Set PYTORCH_DIR to point to the directory where you installed the LibTorch.
+5. Set PYTORCH_DIR to point to the directory where you installed the LibTorch (Remember to download
+the version with correct ABI!).
 
 6. Set CMAKE_INSTALL_PREFIX to the directory where the plugin should be installed.  Usually,
 this will be the same as OPENMM_DIR, so the plugin will be added to your OpenMM installation.
@@ -44,6 +47,8 @@ install the Python wrapper.
 
 Usage
 =====
+
+Set `LD_LIBRARY_PATH` for cudnn and libtorch when necessary.
 
 The first step is to create a PyTorch model defining the calculation to
 perform.  It should take particle positions (in the form of an Nx3 Tensor) as
