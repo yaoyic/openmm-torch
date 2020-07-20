@@ -9,8 +9,9 @@ nn_plugin_header_dir = '@NN_PLUGIN_HEADER_DIR@'
 nn_plugin_library_dir = '@NN_PLUGIN_LIBRARY_DIR@'
 
 # setup extra compile and link arguments on Mac
-extra_compile_args = ['-std=c++11']
-extra_link_args = []
+# for python ABI compatibility 
+extra_compile_args = ['-std=c++11', '-D_GLIBCXX_USE_CXX11_ABI=0', '-fPIC']
+extra_link_args = ['-D_GLIBCXX_USE_CXX11_ABI=0', '-fPIC']
 
 if platform.system() == 'Darwin':
     extra_compile_args += ['-stdlib=libc++', '-mmacosx-version-min=10.7']
