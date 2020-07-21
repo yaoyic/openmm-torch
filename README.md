@@ -101,9 +101,13 @@ Note that this code assumes a rectangular box.  Applying periodic boundary
 conditions with a triclinic box requires a slightly more complicated
 calculation.
 
-License
-=======
+Legal Stuff
+===========
+Modified by Yaoyi Chen for compatibility with OpenMM 7.4.2 and PyTorch 1.5.0
+based on the work of original developers.
 
+Original License Info
+=====================
 This is part of the OpenMM molecular simulation toolkit originating from
 Simbios, the NIH National Center for Physics-Based Simulation of
 Biological Structures at Stanford, funded under the NIH Roadmap for
